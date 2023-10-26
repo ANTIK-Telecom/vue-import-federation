@@ -1,0 +1,31 @@
+{
+  "name": "@antik-web/vue-import-federation",
+  "version": "1.0.0",
+  "description": "A facade for importing vite-module-federation federated modules with catching clause and callback.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "util",
+    "vue",
+    "vite",
+    "module",
+    "federation",
+    "import"
+  ],
+  "author": "Jakub Frankovic",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "~5.2.2",
+    "vue": "~3.3.4"
+  },
+  "files": [
+    "dist/index.d.ts",
+    "dist/index.js",
+    "README.md",
+    "package.json"
+  ]
+}
