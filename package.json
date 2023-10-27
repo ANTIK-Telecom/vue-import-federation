@@ -1,6 +1,6 @@
 {
   "name": "@antik-web/vue-import-federation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A facade for importing vite-module-federation federated modules with catching clause and callback.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,5 +27,9 @@
     "dist/index.js",
     "README.md",
     "package.json"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ANTIK-Telecom/vue-import-federation.git"
+  }
 }
