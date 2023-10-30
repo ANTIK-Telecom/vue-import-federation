@@ -1,6 +1,6 @@
 {
   "name": "@antik-web/vue-import-federation",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A facade for importing vite-module-federation federated modules with catching clause and callback.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

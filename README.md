@@ -52,13 +52,15 @@ It is important that the module is of type `DefineComponent<SomePropInteface>` w
 
 ### Import federation function prototype
 
-The function has 3 parameters:
+The function has 4 parameters:
 
 1. lazy import() function for importing remote component
 
-2. *beforeResolveCallback* which is **optional** function called whenever the component is successfully fetched from remote (but before it is shown in the template).
+2. *beforeFetchCallback* which is **optional** function called when the component is prompted to be shown in any template, before anything is fetched from remote.
 
-3. *errorCallback* which is **optional** function called whenever error happened during the module fetching. This callback will be provided with the exception that happened in the parameter. 
+3. *beforeMountCallback* which is **optional** function called whenever the component is successfully fetched from remote (but before it is shown in the template).
+
+4. *errorCallback* which is **optional** function called whenever error happened during the module fetching. This callback will be provided with the exception that happened in the parameter. 
 
 
 ### Example
@@ -72,6 +74,9 @@ import type SomeComponentType from 'appRemote/SomeComponent';
 const emit = defineEmits(['someEvent']);
 const SomeComponent = importFederation<typeof SomeComponentType>(
     () => import('appRemote/SomeComponent'),
+    () => {
+        console.log('Do something after component is about to show but before it is fetched from remote');
+    },
     () => {
         console.log('Do something right before the component is shown');
     },

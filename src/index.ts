@@ -1,17 +1,18 @@
-import {type AsyncComponentLoader, defineAsyncComponent} from 'vue';
+import { type AsyncComponentLoader, defineAsyncComponent } from 'vue';
 
-export const importFederation = <ComponentType extends object>(importFn: () => Promise<object>, beforeResolveCallback?: () => void, errorCallback?: (e?: any) => void) => {
+export const importFederation = <ComponentType extends object>(
+	importFn: () => Promise<object>,
+	beforeFetchCallback?: () => void | Promise<any>,
+	beforeMountCallback?: () => void | Promise<any>,
+	errorCallback?: (e?: any) => void | Promise<any>) => {
 	const importFederatedModule = async (): ReturnType<AsyncComponentLoader<ComponentType>> => {
+		await beforeFetchCallback?.()
 		try {
 			const component = await importFn() as unknown as ReturnType<AsyncComponentLoader<ComponentType>>;
-			if (beforeResolveCallback) {
-				await beforeResolveCallback();
-			}
+			await beforeMountCallback?.();
 			return component;
 		} catch (e: any) {
-			if (errorCallback) {
-				await errorCallback(e);
-			}
+			await errorCallback?.(e)
 
 			return undefined as unknown as ReturnType<AsyncComponentLoader<ComponentType>>;
 		}
